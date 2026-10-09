@@ -1,0 +1,55 @@
+spring:
+  profile: prod
+  application:
+    name: accounts
+  datasource:
+    url: jdbc:sqlserver://10.40.64.66:19444;databaseName=Suryoday_esb;encrypt=false
+    username: srv.esb
+    password: SRv!S!l@12345$#$
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      initialization-fail-timeout: 0
+      connection-timeout: 3000
+      validation-timeout: 2000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+encdec:
+  pKey: 4ff8faf55836f8441e37e59f44fc62a1   #Need to change for Prod
+
+accountbanking:
+  protocol: http
+  hostname: 10.101.223.15
+  port: 8020
+  path: /FISERVLET/fihttp
+
+frm:
+  protocol: http
+  hostname: 10.101.223.15
+  port: 8020
+  path: /mq/rest/cxq/load/put
+
+tdrddetailsbanking:
+  protocol: ${TDRDDETAILSBANKING_PROTOCOL}
+  hostname: ${TDRDDETAILSBANKING_HOSTNAME}
+  port: ${TDRDDETAILSBANKING_PORT}
+  Resourcepath: ${TDRDDETAILSBANKING_RESOURCEPATH}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 32050

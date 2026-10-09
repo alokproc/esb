@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: accounts
+
+encdec:
+  pKey: 4ff8faf55836f8441e37e59f44fc62a1
+
+accountbanking:
+  protocol: http
+  hostname: 10.20.57.33
+  port: 32280
+  path: /FISERVLET/fihttp
+
+frm:
+  protocol: http
+  hostname: 10.20.57.33
+  port: 32280
+  path: /mq/rest/cxq/load/put
+
+tdrddetailsbanking:
+  protocol: http
+  hostname: 10.20.57.33
+  port: 32023
+  Resourcepath: /bp/accounts/TDRD/{accountID}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 32108

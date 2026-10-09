@@ -1,0 +1,55 @@
+spring:
+  profile: local
+  application:
+    name: accounts
+  datasource:
+    url: jdbc:sqlserver://10.20.72.11:16333;databaseName=Suryoday_esb;encrypt=false
+    username: srv.esb
+    password: SRv!S!l@12345$#$
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      initialization-fail-timeout: 0
+      connection-timeout: 3000
+      validation-timeout: 2000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+encdec:
+  pKey: 4ff8faf55836f8441e37e59f44fc62a1
+
+accountbanking:
+  protocol: http
+  hostname: localhost
+  port: 32280
+  path: /FISERVLET/fihttp
+
+frm:
+  protocol: http
+  hostname: localhost
+  port: 32280
+  path: /mq/rest/cxq/load/put
+
+tdrddetailsbanking:
+  protocol: http
+  hostname: localhost
+  port: 32023
+  Resourcepath: /bp/accounts/TDRD/{accountID}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 32108
